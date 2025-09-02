@@ -1,14 +1,20 @@
 import {
   createNativeStackNavigator,
+  NativeStackHeaderLeftProps,
+  NativeStackHeaderRightProps,
   NativeStackNavigationOptions,
-} from '@react-navigation/native-stack';
+} from "@react-navigation/native-stack";
 import {
   HomeScreen,
   SettingsScreen,
   SportScreen,
   StopwatchScreen,
-} from '../../../screens';
-import { Colors, Theme, useTheme } from '@rneui/themed';
+} from "../../../screens";
+import { Colors, Text, Theme, useTheme } from "@rneui/themed";
+import { TouchableOpacity } from "react-native";
+import { ChevronDown } from "lucide-react-native";
+import HomeHeaderRight from "../../../screens/home-screen/home-header-right";
+import HomeHeaderLeft from "../../../screens/home-screen/home-header-left";
 
 const Stack = createNativeStackNavigator();
 
@@ -17,6 +23,8 @@ const screenOptions = (
   theme: {
     colors: Colors;
   } & Theme,
+  HeaderRight?: (props: NativeStackHeaderRightProps) => React.ReactNode,
+  HeaderLeft?: (props: NativeStackHeaderLeftProps) => React.ReactNode,
 ): NativeStackNavigationOptions => {
   return {
     title,
@@ -26,6 +34,8 @@ const screenOptions = (
     contentStyle: {
       backgroundColor: theme.colors.background,
     },
+    headerLeft: HeaderLeft, // Убрано ()
+    headerRight: HeaderRight, // Убрано ()
   };
 };
 
@@ -37,7 +47,16 @@ export function HomeStack() {
       <Stack.Screen
         name="Home"
         component={HomeScreen}
-        options={screenOptions('БОКС', theme)}
+        options={screenOptions(
+          "БОКС",
+          theme,
+          (props) => (
+            <HomeHeaderRight {...props} />
+          ),
+          (props) => (
+            <HomeHeaderLeft {...props} />
+          ),
+        )}
       />
     </Stack.Navigator>
   );
@@ -50,7 +69,7 @@ export function StopwatchStack() {
       <Stack.Screen
         name="Stopwatch"
         component={StopwatchScreen}
-        options={screenOptions('СЕКУНДОМЕР', theme)}
+        options={screenOptions("СЕКУНДОМЕР", theme)}
       />
     </Stack.Navigator>
   );
@@ -63,7 +82,7 @@ export function SportStack() {
       <Stack.Screen
         name="Sport"
         component={SportScreen}
-        options={screenOptions('СПОРТ', theme)}
+        options={screenOptions("СПОРТ", theme)}
       />
     </Stack.Navigator>
   );
@@ -76,7 +95,7 @@ export function SettingsStack() {
       <Stack.Screen
         name="Settings"
         component={SettingsScreen}
-        options={screenOptions('НАСТРОЙКИ', theme)}
+        options={screenOptions("НАСТРОЙКИ", theme)}
       />
     </Stack.Navigator>
   );

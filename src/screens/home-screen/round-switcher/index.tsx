@@ -36,12 +36,10 @@ const RoundSwitcher: FC<IRoundSwitcher> = () => {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 'auto',
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     gap: 24,
-    marginBottom: 20,
   },
   buttonArrows: {
     width: 58,
