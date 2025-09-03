@@ -7,12 +7,11 @@ import {
 import {
   HomeScreen,
   SettingsScreen,
+  SetupsScreen,
   SportScreen,
   StopwatchScreen,
 } from "../../../screens";
-import { Colors, Text, Theme, useTheme } from "@rneui/themed";
-import { TouchableOpacity } from "react-native";
-import { ChevronDown } from "lucide-react-native";
+import { Colors, Theme, useTheme } from "@rneui/themed";
 import HomeHeaderRight from "../../../screens/home-screen/home-header-right";
 import HomeHeaderLeft from "../../../screens/home-screen/home-header-left";
 
@@ -34,14 +33,15 @@ const screenOptions = (
     contentStyle: {
       backgroundColor: theme.colors.background,
     },
-    headerLeft: HeaderLeft, // Убрано ()
-    headerRight: HeaderRight, // Убрано ()
+    headerLeft: HeaderLeft,
+    headerRight: HeaderRight,
+    headerBackButtonDisplayMode: "minimal",
+    headerTintColor: theme.colors.text,
   };
 };
 
 export function HomeStack() {
   const { theme } = useTheme();
-
   return (
     <Stack.Navigator>
       <Stack.Screen
@@ -82,7 +82,12 @@ export function SportStack() {
       <Stack.Screen
         name="Sport"
         component={SportScreen}
-        options={screenOptions("СПОРТ", theme)}
+        options={screenOptions("Виды спорта", theme)}
+      />
+      <Stack.Screen
+        name="Setups"
+        component={SetupsScreen}
+        options={screenOptions("Установки", theme)}
       />
     </Stack.Navigator>
   );

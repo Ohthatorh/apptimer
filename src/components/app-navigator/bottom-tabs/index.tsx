@@ -1,16 +1,16 @@
 import {
   BottomTabNavigationOptions,
   createBottomTabNavigator,
-} from '@react-navigation/bottom-tabs';
+} from "@react-navigation/bottom-tabs";
 import {
   HomeStack,
   StopwatchStack,
   SettingsStack,
   SportStack,
-} from '../app-stacks';
-import AppIcon from '../../app-icon';
-import { icons } from 'lucide-react-native';
-import { Colors, Theme, useTheme } from '@rneui/themed';
+} from "../app-stacks";
+import AppIcon from "../../app-icon";
+import { icons } from "lucide-react-native";
+import { Colors, Theme, useTheme } from "@rneui/themed";
 
 const Tab = createBottomTabNavigator();
 
@@ -44,11 +44,11 @@ const tabOptions = (
   return {
     headerShown: false,
     title,
-    tabBarIcon: props => RenderTabIcon(iconName, theme, props),
+    tabBarIcon: (props) => RenderTabIcon(iconName, theme, props),
     tabBarActiveTintColor: theme.colors.accent1,
     tabBarStyle: {
       backgroundColor: theme.colors.background,
-      borderTopColor: 'transparent',
+      borderTopColor: "transparent",
     },
     tabBarInactiveTintColor: theme.colors.text2,
     tabBarLabelStyle: { fontSize: 8 },
@@ -58,26 +58,26 @@ const tabOptions = (
 export function BottomTabs() {
   const { theme } = useTheme();
   return (
-    <Tab.Navigator>
+    <Tab.Navigator initialRouteName="HomeTab">
       <Tab.Screen
         name="HomeTab"
         component={HomeStack}
-        options={tabOptions('ТАЙМЕР', 'Timer', theme)}
+        options={tabOptions("ТАЙМЕР", "Timer", theme)}
       />
       <Tab.Screen
         name="StopwatchTab"
         component={StopwatchStack}
-        options={tabOptions('СЕКУНДОМЕР', 'TimerReset', theme)}
+        options={tabOptions("СЕКУНДОМЕР", "TimerReset", theme)}
       />
       <Tab.Screen
         name="SportTab"
         component={SportStack}
-        options={tabOptions('СПОРТ', 'HandFist', theme)}
+        options={tabOptions("СПОРТ", "HandFist", theme)}
       />
       <Tab.Screen
         name="SettingsTab"
         component={SettingsStack}
-        options={tabOptions('НАСТРОЙКИ', 'Settings', theme)}
+        options={tabOptions("НАСТРОЙКИ", "Settings", theme)}
       />
     </Tab.Navigator>
   );

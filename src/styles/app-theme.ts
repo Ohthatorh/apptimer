@@ -70,12 +70,14 @@ export const appTheme = createTheme({
       fontWeight: 600,
       fontSize: 32,
       lineHeight: 43,
+      textTransform: "uppercase",
     },
     h2: {
       fontFamily: "Open Sans",
       fontWeight: 600,
       fontSize: 20,
       lineHeight: 26,
+      textTransform: "uppercase",
     },
     body1: {
       fontFamily: "Open Sans",
