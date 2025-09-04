@@ -7,7 +7,7 @@ export const useGlobalStyles = () => {
   return StyleSheet.create({
     container: {
       flex: 1,
-      paddingHorizontal: theme.spacing?.lg || 16,
+      paddingHorizontal: theme.spacing?.md || 16,
     },
     flex: {
       flex: 1,

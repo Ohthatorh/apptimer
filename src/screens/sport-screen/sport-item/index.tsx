@@ -4,6 +4,7 @@ import AppText from "../../../components/app-text";
 import { SlidersVerticalIcon } from "../../../assets/icons";
 import { Button, makeStyles } from "@rneui/themed";
 import { TSportScreenItem } from "../../../services/types";
+import AppButton from "../../../components/app-button";
 
 interface ISportItem {
   item: TSportScreenItem;
@@ -13,7 +14,7 @@ interface ISportItem {
 const SportItem: FC<ISportItem> = ({ item, index }) => {
   const styles = useStyles({ item, index });
   return (
-    <Button buttonStyle={styles.button} type="clear" onPress={item.onPress}>
+    <AppButton buttonStyle={styles.button} onPress={item.onPress}>
       <View style={styles.container}>
         <View style={styles.mainIcon}>{item.icon}</View>
         <View style={styles.textContainer}>
@@ -24,14 +25,12 @@ const SportItem: FC<ISportItem> = ({ item, index }) => {
         </View>
         <SlidersVerticalIcon style={styles.settingsIcon} />
       </View>
-    </Button>
+    </AppButton>
   );
 };
 
 const useStyles = makeStyles((theme, props: ISportItem) => ({
   button: {
-    padding: 0,
-    paddingHorizontal: 0,
     backgroundColor:
       props.index % 2 !== 0
         ? theme.colors.background

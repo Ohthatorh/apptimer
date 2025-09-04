@@ -1,7 +1,8 @@
-import { Button, useTheme } from '@rneui/themed';
-import { FC } from 'react';
-import { StyleSheet, View } from 'react-native';
-import AppIcon from '../../../components/app-icon';
+import { Button, useTheme } from "@rneui/themed";
+import { FC } from "react";
+import { StyleSheet, View } from "react-native";
+import AppIcon from "../../../components/app-icon";
+import AppButton from "../../../components/app-button";
 
 interface IRoundSwitcher {}
 
@@ -9,23 +10,23 @@ const RoundSwitcher: FC<IRoundSwitcher> = () => {
   const { theme } = useTheme();
   return (
     <View style={styles.container}>
-      <Button buttonStyle={styles.buttonArrows} radius={16} color={'text2'}>
+      <Button buttonStyle={styles.buttonArrows} radius={16} color="text2">
         <AppIcon
-          name={'SkipBack'}
+          name="SkipBack"
           color={theme.colors.background}
           fill={theme.colors.background}
         />
       </Button>
-      <Button buttonStyle={styles.buttonPlay} radius={16} color={'accent1'}>
+      <Button buttonStyle={styles.buttonPlay} radius={16} color="accent1">
         <AppIcon
-          name={'Play'}
+          name="Play"
           color={theme.colors.background}
           fill={theme.colors.background}
         />
       </Button>
-      <Button buttonStyle={styles.buttonArrows} radius={16} color={'text2'}>
+      <Button buttonStyle={styles.buttonArrows} radius={16} color="text2">
         <AppIcon
-          name={'SkipForward'}
+          name="SkipForward"
           color={theme.colors.background}
           fill={theme.colors.background}
         />
@@ -36,9 +37,9 @@ const RoundSwitcher: FC<IRoundSwitcher> = () => {
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
     gap: 24,
   },
   buttonArrows: {

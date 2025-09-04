@@ -2,6 +2,8 @@ import { FC } from "react";
 import { StyleSheet, View, Text } from "react-native";
 import SportList from "./sport-list";
 import { useGlobalStyles } from "../../styles/global";
+import SetupsList from "./setups-list";
+import AddNewTimer from "./add-new-timer";
 
 interface ISetupsScreen {}
 
@@ -11,7 +13,8 @@ const SetupsScreen: FC<ISetupsScreen> = () => {
     <View style={styles.container}>
       <SportList />
       <View style={container}>
-        <Text>SetupsScreen</Text>
+        <SetupsList />
+        <AddNewTimer />
       </View>
     </View>
   );
