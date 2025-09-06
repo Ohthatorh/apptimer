@@ -2,7 +2,6 @@ import { Button, useTheme } from "@rneui/themed";
 import { FC } from "react";
 import { StyleSheet, View } from "react-native";
 import AppIcon from "../../../components/app-icon";
-import AppButton from "../../../components/app-button";
 
 interface IRoundSwitcher {}
 

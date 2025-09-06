@@ -7,7 +7,7 @@ import { SlidersVerticalIcon } from "../../../../assets/icons";
 import AppButton from "../../../../components/app-button";
 import { FlashList } from "@shopify/flash-list";
 import AppSeparator from "../../../../components/app-separator";
-import { useSetupsBottomsheet } from "../../../../services/hooks/useSetupsBottomsheet";
+import { useSetupsBottomsheet } from "../../../../services/hooks";
 
 interface ISetupsItem {
   setupItem: TSetupItem;
