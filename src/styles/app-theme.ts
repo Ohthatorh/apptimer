@@ -18,6 +18,8 @@ declare module "@rneui/themed" {
     body2?: boolean;
     caption?: boolean;
     button?: boolean;
+    footnote?: boolean;
+    number?: boolean;
   }
 
   export interface Theme {
@@ -34,6 +36,7 @@ declare module "@rneui/themed" {
       caption: TextStyle;
       button: TextStyle;
       footnote: TextStyle;
+      number: TextStyle;
     };
   }
 }
@@ -117,6 +120,13 @@ export const appTheme = createTheme({
       fontWeight: 600,
       fontSize: 9,
       lineHeight: 11,
+      textTransform: "uppercase",
+    },
+    number: {
+      fontFamily: "Open Sans",
+      fontWeight: 700,
+      fontSize: 60,
+      lineHeight: 82,
       textTransform: "uppercase",
     },
   },

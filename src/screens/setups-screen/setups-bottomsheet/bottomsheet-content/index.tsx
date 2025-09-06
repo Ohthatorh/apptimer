@@ -1,10 +1,10 @@
 import { FC } from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet } from "react-native";
 import { TSetupListItem } from "../../../../services/types";
 import { BottomSheetView } from "@gorhom/bottom-sheet";
 import AppText from "../../../../components/app-text";
-import { makeStyles } from "@rneui/themed";
 import AppButton from "../../../../components/app-button";
+import Picker from "./picker";
 
 interface IBottomsheetContent {
   item: TSetupListItem;
@@ -17,6 +17,7 @@ const BottomsheetContent: FC<IBottomsheetContent> = ({ item }) => {
       <AppText type="body1Up" style={styles.title}>
         {item.parentTitle} : {item.title}
       </AppText>
+      <Picker />
       <AppButton buttonStyle={styles.button}>
         <AppText type="button" color="accent1">
           Сохранить
