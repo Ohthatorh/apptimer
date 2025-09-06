@@ -3,16 +3,22 @@ import { FC } from "react";
 import AppNavigator from "../app-navigator";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { appTheme } from "../../styles/app-theme";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
 
 interface IAppProvider {}
 
 const AppProvider: FC<IAppProvider> = () => {
   return (
-    <SafeAreaProvider>
+    <GestureHandlerRootView>
       <ThemeProvider theme={appTheme}>
-        <AppNavigator />
+        <BottomSheetModalProvider>
+          <SafeAreaProvider>
+            <AppNavigator />
+          </SafeAreaProvider>
+        </BottomSheetModalProvider>
       </ThemeProvider>
-    </SafeAreaProvider>
+    </GestureHandlerRootView>
   );
 };
 

@@ -7,18 +7,23 @@ import { SlidersVerticalIcon } from "../../../../assets/icons";
 import AppButton from "../../../../components/app-button";
 import { FlashList } from "@shopify/flash-list";
 import AppSeparator from "../../../../components/app-separator";
+import { useSetupsBottomsheet } from "../../../../services/hooks/useSetupsBottomsheet";
 
 interface ISetupsItem {
-  item: TSetupItem;
+  setupItem: TSetupItem;
 }
 
-const SetupsItem: FC<ISetupsItem> = ({ item }) => {
-  const [checked, setChecked] = useState(false);
+const SetupsItem: FC<ISetupsItem> = ({ setupItem }) => {
+  const [showSetups, setShowSetups] = useState(!!setupItem.items.length);
   const styles = useStyles();
   const keyExtractor = useCallback((item: TSetupListItem) => item.title, []);
+  const bottomSheet = useSetupsBottomsheet();
   const renderItem = useCallback(
     ({ item }: { item: TSetupListItem }) => (
-      <AppButton>
+      <AppButton
+        onPress={() =>
+          bottomSheet?.openModal({ ...item, parentTitle: setupItem.title })
+        }>
         <View style={styles.buttonTexts}>
           <AppText type="h1">{item.value}</AppText>
           <AppText type="body2Up" color="text2">
@@ -33,19 +38,18 @@ const SetupsItem: FC<ISetupsItem> = ({ item }) => {
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
-        <AppText type="body1Up">{item.title}</AppText>
-        {item.canDisable && (
+        <AppText type="body1Up">{setupItem.title}</AppText>
+        {setupItem.canDisable && (
           <Switch
             color="accent1"
-            value={checked}
-            onValueChange={(value) => setChecked(value)}
+            value={showSetups}
+            onValueChange={(value) => setShowSetups(value)}
           />
         )}
       </View>
-      asd
-      {checked && (
+      {showSetups && (
         <FlashList
-          data={item.items}
+          data={setupItem.items}
           renderItem={renderItem}
           keyExtractor={keyExtractor}
           ItemSeparatorComponent={() => <AppSeparator height={10} />}

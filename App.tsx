@@ -5,7 +5,7 @@
  * @format
  */
 
-import AppProvider from './src/components/app-provider';
+import AppProvider from "./src/components/app-provider";
 
 function App() {
   return <AppProvider />;

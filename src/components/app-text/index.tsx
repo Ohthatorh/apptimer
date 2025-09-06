@@ -1,9 +1,9 @@
-import { Colors, TextProps, Theme, useTheme } from '@rneui/themed';
-import { FC, ReactNode } from 'react';
-import { Text } from '@rneui/themed';
+import { Colors, TextProps, Theme, useTheme } from "@rneui/themed";
+import { FC, ReactNode } from "react";
+import { Text } from "@rneui/themed";
 
-interface IAppText extends Omit<TextProps, 'type'> {
-  type?: keyof Theme['text'];
+interface IAppText extends Omit<TextProps, "type"> {
+  type?: keyof Theme["text"];
   color?: keyof Colors;
   children: ReactNode;
 }

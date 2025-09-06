@@ -10,7 +10,7 @@ interface ISetupsList {}
 const SetupsList: FC<ISetupsList> = () => {
   const keyExtractor = useCallback((item: TSetupItem) => item.id, []);
   const renderItem = useCallback(
-    ({ item }: { item: TSetupItem }) => <SetupsItem item={item} />,
+    ({ item }: { item: TSetupItem }) => <SetupsItem setupItem={item} />,
     [],
   );
   const SETUPS_DATA: TSetupItem[] = [

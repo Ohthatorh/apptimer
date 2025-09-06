@@ -26,4 +26,5 @@ export type TSetupListItem = {
   maxValue: string | number;
   type: "time" | "count";
   title: string;
+  parentTitle?: string;
 };
