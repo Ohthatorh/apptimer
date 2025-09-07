@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { StyleSheet } from "react-native";
 import { TSetupListItem } from "../../../../services/types";
 import { BottomSheetView } from "@gorhom/bottom-sheet";
@@ -12,12 +12,13 @@ interface IBottomsheetContent {
 
 const BottomsheetContent: FC<IBottomsheetContent> = ({ item }) => {
   console.log(item);
+  const [value, setValue] = useState(item.value);
   return (
     <BottomSheetView style={styles.contentContainer}>
       <AppText type="body1Up" style={styles.title}>
         {item.parentTitle} : {item.title}
       </AppText>
-      <Picker />
+      <Picker value={value} parentId={item.parentId} />
       <AppButton buttonStyle={styles.button}>
         <AppText type="button" color="accent1">
           Сохранить

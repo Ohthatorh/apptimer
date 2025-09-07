@@ -1,4 +1,33 @@
-import { TSportsData } from "../types";
+import { TSetupItem, TSportsData } from "../types";
+
+const DEFAULT_SETUPS_DATA: TSetupItem[] = [
+  {
+    id: "rounds",
+    title: "Раунды",
+    canDisable: false,
+    items: [
+      {
+        title: "Количество",
+        value: "3",
+      },
+      {
+        title: "Время",
+        value: "03:00",
+      },
+    ],
+  },
+  {
+    id: "preparation",
+    title: "Подготовка",
+    canDisable: false,
+    items: [
+      {
+        title: "Время",
+        value: "00:20",
+      },
+    ],
+  },
+];
 
 export const DEFAULT_SPORTS_DATA: TSportsData[] = [
   {
@@ -6,41 +35,209 @@ export const DEFAULT_SPORTS_DATA: TSportsData[] = [
     title: "Новый таймер",
     description: "Создать свой таймер",
     icon: "addIcon",
-    screen: "Setups",
+    setups: [
+      ...DEFAULT_SETUPS_DATA,
+      {
+        id: "rest",
+        title: "Отдых",
+        canDisable: true,
+        items: [
+          {
+            title: "Время",
+            value: "01:00",
+          },
+        ],
+      },
+      {
+        id: "explosion",
+        title: "Взрыв",
+        canDisable: true,
+        items: [
+          {
+            title: "Количество",
+            value: "2",
+          },
+          {
+            title: "Время",
+            value: "01:00",
+          },
+        ],
+      },
+    ],
   },
   {
     code: "box",
     title: "Бокс",
     description: "12 раундов по 3 мин",
     icon: "boxIcon",
-    screen: "Setups",
+    setups: [
+      ...DEFAULT_SETUPS_DATA,
+      {
+        id: "rest",
+        title: "Отдых",
+        canDisable: true,
+        items: [
+          {
+            title: "Время",
+            value: "04:00",
+          },
+        ],
+      },
+      {
+        id: "explosion",
+        title: "Взрыв",
+        canDisable: true,
+        items: [
+          {
+            title: "Количество",
+            value: "2",
+          },
+          {
+            title: "Время",
+            value: "01:00",
+          },
+        ],
+      },
+    ],
   },
   {
     code: "mma",
     title: "ММА",
     description: "3 раунда по 5 мин",
     icon: "mmaIcon",
-    screen: "Setups",
+    setups: [
+      ...DEFAULT_SETUPS_DATA,
+      {
+        id: "rest",
+        title: "Отдых",
+        canDisable: true,
+        items: [
+          {
+            title: "Время",
+            value: "01:25",
+          },
+        ],
+      },
+      {
+        id: "explosion",
+        title: "Взрыв",
+        canDisable: true,
+        items: [
+          {
+            title: "Количество",
+            value: "2",
+          },
+          {
+            title: "Время",
+            value: "01:00",
+          },
+        ],
+      },
+    ],
   },
   {
     code: "kudo",
     title: "Кудо",
     description: "3 раунда по 5 мин",
     icon: "kudoIcon",
-    screen: "Setups",
+    setups: [
+      ...DEFAULT_SETUPS_DATA,
+      {
+        id: "rest",
+        title: "Отдых",
+        canDisable: true,
+        items: [
+          {
+            title: "Время",
+            value: "01:00",
+          },
+        ],
+      },
+      {
+        id: "explosion",
+        title: "Взрыв",
+        canDisable: true,
+        items: [
+          {
+            title: "Количество",
+            value: "2",
+          },
+          {
+            title: "Время",
+            value: "01:00",
+          },
+        ],
+      },
+    ],
   },
   {
     code: "sambo",
     title: "Самбо",
     description: "3 раунда по 5 мин",
     icon: "samboIcon",
-    screen: "Setups",
+    setups: [
+      ...DEFAULT_SETUPS_DATA,
+      {
+        id: "rest",
+        title: "Отдых",
+        canDisable: true,
+        items: [
+          {
+            title: "Время",
+            value: "01:00",
+          },
+        ],
+      },
+      {
+        id: "explosion",
+        title: "Взрыв",
+        canDisable: true,
+        items: [
+          {
+            title: "Количество",
+            value: "2",
+          },
+          {
+            title: "Время",
+            value: "01:00",
+          },
+        ],
+      },
+    ],
   },
   {
     code: "thai",
     title: "Тайский бокс",
     description: "3 раунда по 5 мин",
     icon: "thaiIcon",
-    screen: "Setups",
+    setups: [
+      ...DEFAULT_SETUPS_DATA,
+      {
+        id: "rest",
+        title: "Отдых",
+        canDisable: true,
+        items: [
+          {
+            title: "Время",
+            value: "01:00",
+          },
+        ],
+      },
+      {
+        id: "explosion",
+        title: "Взрыв",
+        canDisable: true,
+        items: [
+          {
+            title: "Количество",
+            value: "2",
+          },
+          {
+            title: "Время",
+            value: "01:00",
+          },
+        ],
+      },
+    ],
   },
 ];

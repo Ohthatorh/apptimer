@@ -9,7 +9,7 @@ export type TSportsData = {
   title: string;
   description: string;
   icon: string;
-  screen: string;
+  setups: TSetupItem[];
 };
 
 export type TSetupItem = {
@@ -20,10 +20,8 @@ export type TSetupItem = {
 };
 
 export type TSetupListItem = {
-  value: string | number;
-  minValue: string | number;
-  maxValue: string | number;
-  type: "time" | "count";
+  value: string;
   title: string;
   parentTitle?: string;
+  parentId?: string;
 };

@@ -18,7 +18,7 @@ const SetupsScreen: FC<ISetupsScreen> = ({ route }) => {
       <View style={styles.container}>
         <SportList currentSport={currentSport} />
         <View style={container}>
-          <SetupsList />
+          <SetupsList currentSport={currentSport} />
           <AddNewTimer />
         </View>
       </View>

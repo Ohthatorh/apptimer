@@ -1,28 +1,34 @@
 import { FC } from "react";
 import { StyleSheet, View } from "react-native";
-import Number from "./number";
 import AppText from "../../../../../components/app-text";
-import { makeStyles } from "@rneui/themed";
-import LinearGradient from "react-native-linear-gradient";
 import Layout from "./layout/layout";
+import WheelNumber from "./wheel-number";
 
-interface IPicker {}
+interface IPicker {
+  value: string;
+  parentId?: string;
+}
 
-const Picker: FC<IPicker> = () => {
-  const styles = useStyles();
+const Picker: FC<IPicker> = ({ value, parentId }) => {
+  const values = value.split(":");
+  console.log(values);
   return (
     <View style={styles.container}>
       <View style={styles.numberContainer}>
-        <Number />
-        <AppText type="number">:</AppText>
-        <Number />
+        <WheelNumber number={values[0]} parentId={parentId} />
+        {values[1] && (
+          <>
+            <AppText type="number">:</AppText>
+            <WheelNumber number={values[1]} parentId={parentId} />
+          </>
+        )}
       </View>
       <Layout />
     </View>
   );
 };
 
-const useStyles = makeStyles((theme) => ({
+const styles = StyleSheet.create({
   container: {
     position: "relative",
     marginBottom: 80,
@@ -35,6 +41,5 @@ const useStyles = makeStyles((theme) => ({
     zIndex: 2,
     position: "relative",
   },
-}));
-
+});
 export default Picker;

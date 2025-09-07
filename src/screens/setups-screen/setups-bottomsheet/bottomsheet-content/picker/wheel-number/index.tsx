@@ -2,19 +2,29 @@ import WheelPicker from "@quidone/react-native-wheel-picker";
 import { FC, useState } from "react";
 import { StyleSheet } from "react-native";
 import AppText from "../../../../../../components/app-text";
+import { MIN_MAX_VALUES } from "../../../../../../services/helpers/minmax-values";
 
-interface INumber {}
-const data = [...Array(100).keys()].map((index) => ({
-  value: index,
-  label: index.toString(),
-}));
-const Number: FC<INumber> = () => {
-  const [value, setValue] = useState(0);
+interface IWheelNumber {
+  number: string;
+  parentId?: string;
+}
+
+const WheelNumber: FC<IWheelNumber> = ({ number, parentId }) => {
+  const [value, setValue] = useState(Number(number));
+  const minValue = MIN_MAX_VALUES[parentId!]?.min || MIN_MAX_VALUES.time.min;
+  const maxValue = MIN_MAX_VALUES[parentId!]?.max || MIN_MAX_VALUES.time.max;
+
+  const data = Array.from({ length: Number(maxValue) }, (_, index) => {
+    const value = Number(minValue) + index;
+    return { label: value.toString(), value: value };
+  });
+
   const renderNumberItem = ({ item }: { item: { label: string } }) => (
     <AppText type="number" style={styles.number}>
       {item.label}
     </AppText>
   );
+
   const onValueChange = ({ item: { value } }: { item: { value: number } }) =>
     setValue(value);
 
@@ -41,4 +51,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Number;
+export default WheelNumber;

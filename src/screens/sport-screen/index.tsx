@@ -19,10 +19,10 @@ const SportScreen: FC<ISportScreen> = () => {
     ),
     [],
   );
-  console.log(sports);
+  // console.log(sports);
   return (
     <View style={flex}>
-      {/* <Button onPress={reset}>asd</Button> */}
+      <Button onPress={reset}>asd</Button>
       <FlashList
         data={sports}
         keyExtractor={keyExtractor}

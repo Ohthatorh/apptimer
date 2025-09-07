@@ -22,7 +22,11 @@ const SetupsItem: FC<ISetupsItem> = ({ setupItem }) => {
     ({ item }: { item: TSetupListItem }) => (
       <AppButton
         onPress={() =>
-          bottomSheet?.openModal({ ...item, parentTitle: setupItem.title })
+          bottomSheet?.openModal({
+            ...item,
+            parentTitle: setupItem.title,
+            parentId: setupItem.id,
+          })
         }>
         <View style={styles.buttonTexts}>
           <AppText type="h1">{item.value}</AppText>
