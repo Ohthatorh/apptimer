@@ -1,16 +1,15 @@
-import { JSX } from "react";
 import { ViewStyle } from "react-native";
 
 export type TIcon = {
   style?: ViewStyle;
 };
 
-export type TSportScreenItem = {
+export type TSportsData = {
   code: string;
   title: string;
   description: string;
-  icon: JSX.Element;
-  onPress: () => void;
+  icon: string;
+  screen: string;
 };
 
 export type TSetupItem = {

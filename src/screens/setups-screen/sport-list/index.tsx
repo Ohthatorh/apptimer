@@ -3,45 +3,25 @@ import { FC, useCallback } from "react";
 import { StyleSheet } from "react-native";
 import SportItem from "./sport-item";
 import AppSeparator from "../../../components/app-separator";
+import useSportsStore from "../../../services/store/useSportsStore";
+import { TSportsData } from "../../../services/types";
 
-interface ISportList {}
+interface ISportList {
+  currentSport: string;
+}
 
-const SportList: FC<ISportList> = () => {
-  const DATA: any[] = [
-    {
-      code: "newTimer",
-      title: "+ таймер",
-    },
-    {
-      code: "box",
-      title: "Бокс",
-      isChecked: true,
-    },
-    {
-      code: "mma",
-      title: "ММА",
-    },
-    {
-      code: "kudo",
-      title: "Кудо",
-    },
-    {
-      code: "sambo",
-      title: "Самбо",
-    },
-    {
-      code: "thai",
-      title: "Тайский бокс",
-    },
-  ];
-  const keyExtractor = useCallback((item: any) => item.code, []);
+const SportList: FC<ISportList> = ({ currentSport }) => {
+  const { sports } = useSportsStore();
+  const keyExtractor = useCallback((item: TSportsData) => item.code, []);
   const renderItem = useCallback(
-    ({ item }: { item: any }) => <SportItem item={item} />,
-    [],
+    ({ item }: { item: TSportsData }) => (
+      <SportItem item={item} currentSport={currentSport} />
+    ),
+    [currentSport],
   );
   return (
     <FlashList
-      data={DATA}
+      data={sports}
       keyExtractor={keyExtractor}
       renderItem={renderItem}
       horizontal

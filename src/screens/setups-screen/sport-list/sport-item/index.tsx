@@ -1,17 +1,34 @@
-import { Button, makeStyles } from "@rneui/themed";
+import { makeStyles } from "@rneui/themed";
 import { FC } from "react";
 import AppText from "../../../../components/app-text";
 import AppButton from "../../../../components/app-button";
+import { useAppNavigation } from "../../../../services/hooks";
 
 interface ISportItem {
   item: any;
+  currentSport: string;
 }
 
-const SportItem: FC<ISportItem> = ({ item }) => {
+const SportItem: FC<ISportItem> = ({ item, currentSport }) => {
   const styles = useStyles();
+  const navigation = useAppNavigation();
+  const handlePress = () => {
+    navigation.setParams({
+      code: item.code,
+    });
+  };
+
   return (
-    <AppButton buttonStyle={[styles.chip, item.isChecked && styles.isChecked]}>
-      <AppText type="body2Up" color={item.isChecked ? "white" : "text2"}>
+    <AppButton
+      onPress={handlePress}
+      buttonStyle={[
+        styles.chip,
+        currentSport === item.code && styles.isChecked,
+      ]}
+      disabled={currentSport === item.code}>
+      <AppText
+        type="body2Up"
+        color={currentSport === item.code ? "white" : "text2"}>
         {item.title}
       </AppText>
     </AppButton>

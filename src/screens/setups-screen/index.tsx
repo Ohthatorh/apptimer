@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import { StyleSheet, View, Text } from "react-native";
 import SportList from "./sport-list";
 import { useGlobalStyles } from "../../styles/global";
@@ -6,14 +6,17 @@ import SetupsList from "./setups-list";
 import AddNewTimer from "./add-new-timer";
 import SetupsBottomsheet from "./setups-bottomsheet";
 
-interface ISetupsScreen {}
+interface ISetupsScreen {
+  route: any;
+}
 
-const SetupsScreen: FC<ISetupsScreen> = () => {
+const SetupsScreen: FC<ISetupsScreen> = ({ route }) => {
+  const currentSport = route.params.code;
   const { container } = useGlobalStyles();
   return (
     <SetupsBottomsheet>
       <View style={styles.container}>
-        <SportList />
+        <SportList currentSport={currentSport} />
         <View style={container}>
           <SetupsList />
           <AddNewTimer />

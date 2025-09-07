@@ -1,22 +1,47 @@
-import { FC } from "react";
+import { FC, JSX } from "react";
 import { View } from "react-native";
 import AppText from "../../../components/app-text";
-import { SlidersVerticalIcon } from "../../../assets/icons";
-import { Button, makeStyles } from "@rneui/themed";
-import { TSportScreenItem } from "../../../services/types";
+import {
+  AddIcon,
+  BoxIcon,
+  CustomSportIcon,
+  KudoIcon,
+  MmaIcon,
+  SamboIcon,
+  SlidersVerticalIcon,
+  ThaiIcon,
+} from "../../../assets/icons";
+import { makeStyles } from "@rneui/themed";
+import { TSportsData } from "../../../services/types";
 import AppButton from "../../../components/app-button";
+import { useAppNavigation } from "../../../services/hooks";
 
 interface ISportItem {
-  item: TSportScreenItem;
+  item: TSportsData;
   index: number;
 }
 
+const ICONS: Record<string, JSX.Element> = {
+  addIcon: <AddIcon />,
+  boxIcon: <BoxIcon />,
+  mmaIcon: <MmaIcon />,
+  kudoIcon: <KudoIcon />,
+  samboIcon: <SamboIcon />,
+  thaiIcon: <ThaiIcon />,
+  anotherIcon: <CustomSportIcon />,
+};
+
 const SportItem: FC<ISportItem> = ({ item, index }) => {
+  const navigation = useAppNavigation();
   const styles = useStyles({ item, index });
+  const handleNavigate = () =>
+    navigation.navigate("Setups", { code: item.code });
   return (
-    <AppButton buttonStyle={styles.button} onPress={item.onPress}>
+    <AppButton buttonStyle={styles.button} onPress={handleNavigate}>
       <View style={styles.container}>
-        <View style={styles.mainIcon}>{item.icon}</View>
+        <View style={styles.mainIcon}>
+          {ICONS[item.icon] || ICONS.anotherIcon}
+        </View>
         <View style={styles.textContainer}>
           <AppText type="h2">{item.title}</AppText>
           <AppText type="body1" color="text2">
