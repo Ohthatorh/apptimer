@@ -7,10 +7,16 @@ import { MIN_MAX_VALUES } from "../../../../../../services/helpers/minmax-values
 interface IWheelNumber {
   number: string;
   type: "count" | "time";
+  onValueChange: (value: string) => void;
   parentId?: string;
 }
 
-const WheelNumber: FC<IWheelNumber> = ({ number, type, parentId }) => {
+const WheelNumber: FC<IWheelNumber> = ({
+  number,
+  type,
+  parentId,
+  onValueChange,
+}) => {
   const [value, setValue] = useState(Number(number));
   const minValue = MIN_MAX_VALUES[parentId!][type].min;
   const maxValue = MIN_MAX_VALUES[parentId!][type].max;
@@ -28,14 +34,20 @@ const WheelNumber: FC<IWheelNumber> = ({ number, type, parentId }) => {
     </AppText>
   );
 
-  const onValueChange = ({ item: { value } }: { item: { value: number } }) =>
+  const handleValueChange = ({
+    item: { value, label },
+  }: {
+    item: { value: number; label: string };
+  }) => {
     setValue(value);
+    onValueChange(label);
+  };
 
   return (
     <WheelPicker
       data={data}
       value={value}
-      onValueChanged={onValueChange}
+      onValueChanged={handleValueChange}
       enableScrollByTapOnItem={true}
       renderItem={renderNumberItem}
       overlayItemStyle={styles.overlayItemStyle}

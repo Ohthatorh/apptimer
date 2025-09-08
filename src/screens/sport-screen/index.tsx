@@ -1,4 +1,4 @@
-import { FC, useCallback } from "react";
+import { FC } from "react";
 import { View } from "react-native";
 import { useGlobalStyles } from "../../styles/global";
 import SportItem from "./sport-item";
@@ -12,13 +12,14 @@ interface ISportScreen {}
 const SportScreen: FC<ISportScreen> = () => {
   const { flex } = useGlobalStyles();
   const { sports, reset } = useSportsStore();
-  const keyExtractor = useCallback((item: TSportsData) => item.code, []);
-  const renderItem = useCallback(
-    ({ item, index }: { item: TSportsData; index: number }) => (
-      <SportItem item={item} index={index} />
-    ),
-    [],
-  );
+  const keyExtractor = (item: TSportsData) => item.code;
+  const renderItem = ({
+    item,
+    index,
+  }: {
+    item: TSportsData;
+    index: number;
+  }) => <SportItem item={item} index={index} />;
   // console.log(sports);
   return (
     <View style={flex}>

@@ -1,5 +1,5 @@
 import { FlashList } from "@shopify/flash-list";
-import { FC, useCallback } from "react";
+import { FC } from "react";
 import { StyleSheet } from "react-native";
 import SportItem from "./sport-item";
 import AppSeparator from "../../../components/app-separator";
@@ -12,12 +12,9 @@ interface ISportList {
 
 const SportList: FC<ISportList> = ({ currentSport }) => {
   const { sports } = useSportsStore();
-  const keyExtractor = useCallback((item: TSportsData) => item.code, []);
-  const renderItem = useCallback(
-    ({ item }: { item: TSportsData }) => (
-      <SportItem item={item} currentSport={currentSport} />
-    ),
-    [currentSport],
+  const keyExtractor = (item: TSportsData) => item.code;
+  const renderItem = ({ item }: { item: TSportsData }) => (
+    <SportItem item={item} currentSport={currentSport} />
   );
   return (
     <FlashList

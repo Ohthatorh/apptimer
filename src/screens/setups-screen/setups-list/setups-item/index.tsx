@@ -1,53 +1,54 @@
-import { FC, useCallback, useState } from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { FC } from "react";
+import { View } from "react-native";
 import { TSetupItem, TSetupListItem } from "../../../../services/types";
-import { Button, makeStyles, Switch } from "@rneui/themed";
+import { makeStyles } from "@rneui/themed";
 import AppText from "../../../../components/app-text";
 import { SlidersVerticalIcon } from "../../../../assets/icons";
 import AppButton from "../../../../components/app-button";
 import { FlashList } from "@shopify/flash-list";
 import AppSeparator from "../../../../components/app-separator";
 import { useSetupsBottomsheet } from "../../../../services/hooks";
+import SetupsSwitch from "./setups-switch";
 
 interface ISetupsItem {
   setupItem: TSetupItem;
+  currentSport: string;
 }
 
-const SetupsItem: FC<ISetupsItem> = ({ setupItem }) => {
-  const [showSetups, setShowSetups] = useState(!!setupItem.items.length);
+const SetupsItem: FC<ISetupsItem> = ({ setupItem, currentSport }) => {
+  const showSetups = !!setupItem.items.length;
   const styles = useStyles();
-  const keyExtractor = useCallback((item: TSetupListItem) => item.title, []);
+  const keyExtractor = (item: TSetupListItem) => item.title;
   const bottomSheet = useSetupsBottomsheet();
-  const renderItem = useCallback(
-    ({ item }: { item: TSetupListItem }) => (
-      <AppButton
-        onPress={() =>
-          bottomSheet?.openModal({
-            ...item,
-            parentTitle: setupItem.title,
-            parentId: setupItem.id,
-          })
-        }>
-        <View style={styles.buttonTexts}>
-          <AppText type="h1">{item.value}</AppText>
-          <AppText type="body2Up" color="text2">
-            {item.title}
-          </AppText>
-        </View>
-        <SlidersVerticalIcon />
-      </AppButton>
-    ),
-    [],
+  const renderItem = ({ item }: { item: TSetupListItem }) => (
+    <AppButton
+      onPress={() =>
+        bottomSheet?.openModal({
+          ...item,
+          parentTitle: setupItem.title,
+          parentId: setupItem.id,
+          currentSport: currentSport,
+        })
+      }>
+      <View style={styles.buttonTexts}>
+        <AppText type="h1">{item.value}</AppText>
+        <AppText type="body2Up" color="text2">
+          {item.title}
+        </AppText>
+      </View>
+      <SlidersVerticalIcon />
+    </AppButton>
   );
+
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
         <AppText type="body1Up">{setupItem.title}</AppText>
         {setupItem.canDisable && (
-          <Switch
-            color="accent1"
-            value={showSetups}
-            onValueChange={(value) => setShowSetups(value)}
+          <SetupsSwitch
+            setupItem={setupItem}
+            currentSport={currentSport}
+            showSetups={showSetups}
           />
         )}
       </View>

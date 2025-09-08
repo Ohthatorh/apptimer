@@ -24,5 +24,6 @@ export type TSetupListItem = {
   title: string;
   parentId?: string;
   parentTitle?: string;
+  currentSport?: string;
   type: "count" | "time";
 };

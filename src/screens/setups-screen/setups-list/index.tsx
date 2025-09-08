@@ -1,5 +1,5 @@
 import { FlashList } from "@shopify/flash-list";
-import { FC, useCallback } from "react";
+import { FC } from "react";
 import { StyleSheet, View } from "react-native";
 import { TSetupItem } from "../../../services/types";
 import SetupsItem from "./setups-item";
@@ -13,10 +13,10 @@ interface ISetupsList {
 const SetupsList: FC<ISetupsList> = ({ currentSport }) => {
   const { sports } = useSportsStore();
   const currentSportData = sports.find((item) => item.code === currentSport);
-  const keyExtractor = useCallback((item: TSetupItem) => item.id, []);
-  const renderItem = useCallback(
-    ({ item }: { item: TSetupItem }) => <SetupsItem setupItem={item} />,
-    [currentSport],
+  const keyExtractor = (item: TSetupItem) => item.id;
+
+  const renderItem = ({ item }: { item: TSetupItem }) => (
+    <SetupsItem setupItem={item} currentSport={currentSport} />
   );
   return (
     <View style={styles.container}>

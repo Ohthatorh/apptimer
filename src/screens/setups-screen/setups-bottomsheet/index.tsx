@@ -58,7 +58,9 @@ const SetupsBottomsheet: FC<ISetupsBottomsheet> = ({ children }) => {
         backgroundStyle={styles.backgroundStyle}
         handleStyle={styles.handleStyle}
         handleIndicatorStyle={styles.handleIndicatorStyle}>
-        {({ data }) => <BottomsheetContent item={data} />}
+        {({ data }) => (
+          <BottomsheetContent item={data} onClose={handleCloseModal} />
+        )}
       </BottomSheetModal>
     </BottomsheetContext.Provider>
   );
