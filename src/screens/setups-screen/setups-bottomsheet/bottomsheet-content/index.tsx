@@ -18,7 +18,7 @@ const BottomsheetContent: FC<IBottomsheetContent> = ({ item }) => {
       <AppText type="body1Up" style={styles.title}>
         {item.parentTitle} : {item.title}
       </AppText>
-      <Picker value={value} parentId={item.parentId} />
+      <Picker value={value} parentId={item.parentId} type={item.type} />
       <AppButton buttonStyle={styles.button}>
         <AppText type="button" color="accent1">
           Сохранить

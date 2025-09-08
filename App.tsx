@@ -7,10 +7,10 @@
 
 import { ActivityIndicator } from "react-native";
 import AppProvider from "./src/components/app-provider";
-import useSetupsStore from "./src/services/store/useSetupsStore";
+import useSportsStore from "./src/services/store/useSportsStore";
 
 function App() {
-  const { _isHydrated } = useSetupsStore();
+  const { _isHydrated } = useSportsStore();
 
   if (!_isHydrated) return <ActivityIndicator />;
 

@@ -1,14 +1,43 @@
-export const MIN_MAX_VALUES: Record<string, { min: string; max: string }> = {
+export type MinMaxValues = {
+  [key: string]: {
+    [N: string]: {
+      min: string;
+      max: string;
+    };
+  };
+};
+
+export const MIN_MAX_VALUES: MinMaxValues = {
   rounds: {
-    min: "1",
-    max: "99",
+    count: {
+      min: "1",
+      max: "99",
+    },
+    time: {
+      min: "00",
+      max: "60",
+    },
   },
   explosion: {
-    min: "1",
-    max: "9",
+    count: {
+      min: "1",
+      max: "9",
+    },
+    time: {
+      min: "00",
+      max: "60",
+    },
   },
-  time: {
-    min: "00",
-    max: "59",
+  preparation: {
+    time: {
+      min: "00",
+      max: "60",
+    },
+  },
+  rest: {
+    time: {
+      min: "00",
+      max: "60",
+    },
   },
 };

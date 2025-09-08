@@ -6,20 +6,21 @@ import WheelNumber from "./wheel-number";
 
 interface IPicker {
   value: string;
+  type: "count" | "time";
   parentId?: string;
 }
 
-const Picker: FC<IPicker> = ({ value, parentId }) => {
+const Picker: FC<IPicker> = ({ value, type, parentId }) => {
   const values = value.split(":");
   console.log(values);
   return (
     <View style={styles.container}>
       <View style={styles.numberContainer}>
-        <WheelNumber number={values[0]} parentId={parentId} />
+        <WheelNumber number={values[0]} parentId={parentId} type={type} />
         {values[1] && (
           <>
             <AppText type="number">:</AppText>
-            <WheelNumber number={values[1]} parentId={parentId} />
+            <WheelNumber number={values[1]} parentId={parentId} type={type} />
           </>
         )}
       </View>

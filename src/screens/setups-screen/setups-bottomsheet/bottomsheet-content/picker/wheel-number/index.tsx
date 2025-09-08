@@ -6,17 +6,20 @@ import { MIN_MAX_VALUES } from "../../../../../../services/helpers/minmax-values
 
 interface IWheelNumber {
   number: string;
+  type: "count" | "time";
   parentId?: string;
 }
 
-const WheelNumber: FC<IWheelNumber> = ({ number, parentId }) => {
+const WheelNumber: FC<IWheelNumber> = ({ number, type, parentId }) => {
   const [value, setValue] = useState(Number(number));
-  const minValue = MIN_MAX_VALUES[parentId!]?.min || MIN_MAX_VALUES.time.min;
-  const maxValue = MIN_MAX_VALUES[parentId!]?.max || MIN_MAX_VALUES.time.max;
+  const minValue = MIN_MAX_VALUES[parentId!][type].min;
+  const maxValue = MIN_MAX_VALUES[parentId!][type].max;
 
   const data = Array.from({ length: Number(maxValue) }, (_, index) => {
     const value = Number(minValue) + index;
-    return { label: value.toString(), value: value };
+    const label =
+      value < 10 && minValue.length === 2 ? `0${value}` : value.toString();
+    return { label: label, value: value };
   });
 
   const renderNumberItem = ({ item }: { item: { label: string } }) => (

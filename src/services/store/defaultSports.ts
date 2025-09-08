@@ -8,10 +8,12 @@ const DEFAULT_SETUPS_DATA: TSetupItem[] = [
     items: [
       {
         title: "Количество",
+        type: "count",
         value: "3",
       },
       {
         title: "Время",
+        type: "time",
         value: "03:00",
       },
     ],
@@ -23,6 +25,7 @@ const DEFAULT_SETUPS_DATA: TSetupItem[] = [
     items: [
       {
         title: "Время",
+        type: "time",
         value: "00:20",
       },
     ],
@@ -44,6 +47,7 @@ export const DEFAULT_SPORTS_DATA: TSportsData[] = [
         items: [
           {
             title: "Время",
+            type: "time",
             value: "01:00",
           },
         ],
@@ -55,10 +59,12 @@ export const DEFAULT_SPORTS_DATA: TSportsData[] = [
         items: [
           {
             title: "Количество",
+            type: "count",
             value: "2",
           },
           {
             title: "Время",
+            type: "time",
             value: "01:00",
           },
         ],
@@ -79,6 +85,7 @@ export const DEFAULT_SPORTS_DATA: TSportsData[] = [
         items: [
           {
             title: "Время",
+            type: "time",
             value: "04:00",
           },
         ],
@@ -90,10 +97,12 @@ export const DEFAULT_SPORTS_DATA: TSportsData[] = [
         items: [
           {
             title: "Количество",
+            type: "count",
             value: "2",
           },
           {
             title: "Время",
+            type: "time",
             value: "01:00",
           },
         ],
@@ -114,7 +123,8 @@ export const DEFAULT_SPORTS_DATA: TSportsData[] = [
         items: [
           {
             title: "Время",
-            value: "01:25",
+            type: "time",
+            value: "01:00",
           },
         ],
       },
@@ -125,10 +135,12 @@ export const DEFAULT_SPORTS_DATA: TSportsData[] = [
         items: [
           {
             title: "Количество",
+            type: "count",
             value: "2",
           },
           {
             title: "Время",
+            type: "time",
             value: "01:00",
           },
         ],
@@ -149,6 +161,7 @@ export const DEFAULT_SPORTS_DATA: TSportsData[] = [
         items: [
           {
             title: "Время",
+            type: "time",
             value: "01:00",
           },
         ],
@@ -160,10 +173,12 @@ export const DEFAULT_SPORTS_DATA: TSportsData[] = [
         items: [
           {
             title: "Количество",
+            type: "count",
             value: "2",
           },
           {
             title: "Время",
+            type: "time",
             value: "01:00",
           },
         ],
@@ -184,6 +199,7 @@ export const DEFAULT_SPORTS_DATA: TSportsData[] = [
         items: [
           {
             title: "Время",
+            type: "time",
             value: "01:00",
           },
         ],
@@ -195,10 +211,12 @@ export const DEFAULT_SPORTS_DATA: TSportsData[] = [
         items: [
           {
             title: "Количество",
+            type: "count",
             value: "2",
           },
           {
             title: "Время",
+            type: "time",
             value: "01:00",
           },
         ],
@@ -219,6 +237,7 @@ export const DEFAULT_SPORTS_DATA: TSportsData[] = [
         items: [
           {
             title: "Время",
+            type: "time",
             value: "01:00",
           },
         ],
@@ -230,10 +249,12 @@ export const DEFAULT_SPORTS_DATA: TSportsData[] = [
         items: [
           {
             title: "Количество",
+            type: "count",
             value: "2",
           },
           {
             title: "Время",
+            type: "time",
             value: "01:00",
           },
         ],

@@ -22,6 +22,7 @@ export type TSetupItem = {
 export type TSetupListItem = {
   value: string;
   title: string;
-  parentTitle?: string;
   parentId?: string;
+  parentTitle?: string;
+  type: "count" | "time";
 };
