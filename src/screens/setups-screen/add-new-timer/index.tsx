@@ -1,18 +1,23 @@
-import { makeStyles } from "@rneui/themed";
+import { Input, makeStyles } from "@rneui/themed";
 import { FC } from "react";
 import AppText from "../../../components/app-text";
 import AppButton from "../../../components/app-button";
+import { View } from "react-native";
+import AppInput from "../../../components/app-input";
 
 interface IAddNewTimer {}
 
 const AddNewTimer: FC<IAddNewTimer> = () => {
   const styles = useStyles();
   return (
-    <AppButton buttonStyle={styles.button}>
-      <AppText type="button" color="black">
-        Добавить новый таймер
-      </AppText>
-    </AppButton>
+    <View>
+      <AppInput placeholder="Введите название таймера" />
+      <AppButton buttonStyle={styles.button}>
+        <AppText type="button" color="black">
+          Добавить новый таймер
+        </AppText>
+      </AppButton>
+    </View>
   );
 };
 
